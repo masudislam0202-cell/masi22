@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37MAXIGAME - Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 20px; }
+        .card { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .wheel-monitors { display: flex; justify-content: space-between; gap: 10px; }
+        .monitor-box { background: #eef2f5; padding: 10px; border-radius: 6px; width: 32%; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background: #34495e; color: #fff; }
+        .form-group { margin-bottom: 10px; }
+        input, select, button { padding: 8px; margin-right: 5px; }
+        .btn-danger { background: #e74c3c; color: #fff; border: none; }
+        .btn-success { background: #2ecc71; color: #fff; border: none; }
+    </style>
+</head>
+<body>
+
+    <h2>⚙️ 37 MAXI GAME - Admin Control Panel</h2>
+
+    <div class="card">
+        <h3>Live Synchronized Wheel Monitors</h3>
+        <div class="wheel-monitors">
+            <div class="monitor-box">
+                <h4>3-min Wheel (0-9)</h4>
+                <p>Timer: <b>02:30</b></p>
+                <p>Last Winner: <b>5</b></p>
+            </div>
+            <div class="monitor-box">
+                <h4>30-min Wheel (0-99)</h4>
+                <p>Timer: <b>15:00</b></p>
+                <p>Last Winner: <b>09</b></p>
+            </div>
+            <div class="monitor-box">
+                <h4>10-min Wheel (A-Z)</h4>
+                <p>Timer: <b>04:10</b></p>
+                <p>Last Winner: <b>M</b></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>User Management & Points Control</h3>
+        <div class="form-group">
+            <input type="text" id="adminUserId" placeholder="Name / User ID">
+            <input type="text" id="adminPassword" placeholder="Password">
+            <input type="number" id="adminPoints" placeholder="Points Amount">
+            <button class="btn-success" onclick="updatePoints('add')">Add Points</button>
+            <button class="btn-danger" onclick="updatePoints('subtract')">Subtract Points</button>
+            <button class="btn-danger" onclick="toggleBlock()">Block/Unblock User</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Live Betting & User Activity</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Game Type</th>
+                    <th>Bet Choice</th>
+                    <th>Points Bet</th>
+                </tr>
+            </thead>
+            <tbody id="liveBetTable">
+                <tr>
+                    <td>MAX-G7</td>
+                    <td>0-9 Game</td>
+                    <td>7</td>
+                    <td>150</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function updatePoints(action) {
+            let user = document.getElementById('adminUserId').value;
+            let pts = document.getElementById('adminPoints').value;
+            alert(`${action.toUpperCase()} ${pts} points for user ${user}`);
+        }
+
+        function toggleBlock() {
+            let user = document.getElementById('adminUserId').value;
+            alert(`User ${user} block status updated.`);
+        }
+    </script>
+
+</body>
+</html>
